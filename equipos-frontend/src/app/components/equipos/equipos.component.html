@@ -2,6 +2,9 @@
 <ul>
   <li *ngFor="let equipo of equipos">
     {{ equipo.nombre }} - {{ equipo.ciudad }}
+    <button type="button" [routerLink]="['/equipos/view', equipo.id]">
+      Ver
+    </button>
     <button type="button" [routerLink]="['/equipos/edit', equipo.id]">
       Editar
     </button>
