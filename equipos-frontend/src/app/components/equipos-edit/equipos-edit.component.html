@@ -1,0 +1,10 @@
+<h2>Editar Equipo</h2>
+<form [formGroup]="equipoForm" (ngSubmit)="onSubmit()">
+  <label for="nombre">Nombre:</label>
+  <input id="nombre" formControlName="nombre" type="text">
+  
+  <label for="ciudad">Ciudad:</label>
+  <input id="ciudad" formControlName="ciudad" type="text">
+  
+  <button type="submit" [disabled]="equipoForm.invalid">Actualizar Equipo</button>
+</form>

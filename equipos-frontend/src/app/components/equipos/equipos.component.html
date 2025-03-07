@@ -2,5 +2,11 @@
 <ul>
   <li *ngFor="let equipo of equipos">
     {{ equipo.nombre }} - {{ equipo.ciudad }}
+    <button type="button" [routerLink]="['/equipos/edit', equipo.id]">
+      Editar
+    </button>
+    <button type="button" [routerLink]="['/equipos/delete', equipo.id]">
+      Eliminar
+    </button>
   </li>
 </ul>

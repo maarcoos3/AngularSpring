@@ -3,10 +3,13 @@
 import { Component, OnInit } from '@angular/core';
 import { EquipoService } from '../../services/equipo.service';
 import { Equipo } from '../../models/equipo';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-equipos',
   templateUrl: './equipos.component.html',
+  imports: [CommonModule, RouterLink],
   styleUrls: ['./equipos.component.css']
 })
 export class EquiposComponent implements OnInit {

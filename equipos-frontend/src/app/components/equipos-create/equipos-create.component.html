@@ -1,0 +1,16 @@
+<h2>Crear Equipo</h2>
+<form [formGroup]="equipoForm" (ngSubmit)="onSubmit()">
+  <label for="nombre">Nombre:</label>
+  <input id="nombre" formControlName="nombre" type="text">
+  <div *ngIf="equipoForm.controls['nombre'].invalid && equipoForm.controls['nombre'].touched">
+    El nombre es obligatorio.
+  </div>
+  
+  <label for="ciudad">Ciudad:</label>
+  <input id="ciudad" formControlName="ciudad" type="text">
+  <div *ngIf="equipoForm.controls['ciudad'].invalid && equipoForm.controls['ciudad'].touched">
+    La ciudad es obligatoria.
+  </div>
+  
+  <button type="submit" [disabled]="equipoForm.invalid">Crear Equipo</button>
+</form>

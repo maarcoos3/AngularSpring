@@ -1,6 +1,10 @@
-<h2>Lista de Equipos</h2>
-<ul>
-  <li *ngFor="let equipo of equipos">
-    {{ equipo.nombre }} - {{ equipo.ciudad }}
-  </li>
-</ul>
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 5px;
+}
+
