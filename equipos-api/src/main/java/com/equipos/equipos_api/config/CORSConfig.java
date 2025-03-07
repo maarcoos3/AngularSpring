@@ -1,5 +1,3 @@
-// CORSConfig.java en un paquete de configuración, por ejemplo: com.equipos.equipos_api.config
-
 package com.equipos.equipos_api.config;
 
 import org.springframework.context.annotation.Bean;

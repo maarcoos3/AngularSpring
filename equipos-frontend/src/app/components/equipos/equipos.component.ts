@@ -1,5 +1,3 @@
-// src/app/components/equipos/equipos.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { EquipoService } from '../../services/equipo.service';
 import { Equipo } from '../../models/equipo';

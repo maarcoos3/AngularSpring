@@ -1,5 +1,3 @@
-// src/app/services/equipo.service.ts
-
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -9,7 +7,7 @@ import { Equipo } from '../models/equipo';
   providedIn: 'root'
 })
 export class EquipoService {
-  private apiUrl = 'http://localhost:8080/api/equipos'; // URL del backend
+  private apiUrl = 'http://localhost:8080/api/equipos'; 
 
   constructor(private http: HttpClient) {}
 

@@ -1,4 +1,3 @@
-// src/app/components/equipos-delete/equipos-delete.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -18,7 +17,7 @@ export class EquiposDeleteComponent implements OnInit {
   constructor(
     private equipoService: EquipoService,
     private route: ActivatedRoute,
-    public router: Router  // Se hace público para usarlo en el template
+    public router: Router
   ) {}
 
   ngOnInit(): void {

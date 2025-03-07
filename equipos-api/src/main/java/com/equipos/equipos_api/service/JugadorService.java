@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+// indica que esta clase es un servicio de Spring
 @Service
 public class JugadorService {
 
