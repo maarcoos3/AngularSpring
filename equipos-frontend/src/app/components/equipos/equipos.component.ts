@@ -4,6 +4,7 @@ import { Equipo } from '../../models/equipo';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
+
 @Component({
   selector: 'app-equipos',
   templateUrl: './equipos.component.html',
@@ -31,4 +32,9 @@ export class EquiposComponent implements OnInit {
       }
     );
   }
+
+  confirmAction(message: string): boolean {
+    return window.confirm(message);
+  }
+  
 }

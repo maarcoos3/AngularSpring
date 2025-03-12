@@ -1,10 +1,9 @@
-h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+.table td,
+.table th {
+  padding: 1rem !important;
 }
 
-li {
-  list-style: none;
-  margin-bottom: 5px;
+.table {
+  font-size: 1.05rem;
+  max-width: 1200px;
 }
-

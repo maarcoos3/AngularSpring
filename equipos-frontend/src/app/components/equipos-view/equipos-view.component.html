@@ -1,6 +1,36 @@
-<h2>Detalle del Equipo</h2>
-<div *ngIf="equipo">
-  <p><strong>Nombre:</strong> {{ equipo.nombre }}</p>
-  <p><strong>Ciudad:</strong> {{ equipo.ciudad }}</p>
-  <!-- Puedes agregar más campos según la información de tu equipo -->
+<div class="container mt-4">
+  <h2 class="mb-3">Detalle del Equipo</h2>
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <h4 class="card-title">{{ equipo.nombre }}</h4>
+      <p class="card-text"><strong>Ciudad:</strong> {{ equipo.ciudad }}</p>
+      <!-- Puedes agregar más información del equipo aquí -->
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Jugadores</h3>
+    <button type="button" class="btn btn-sm btn-success" [routerLink]="['/jugadores/create']" [queryParams]="{ equipoId: equipo.id }">
+      Añadir Jugador
+    </button>
+  </div>
+
+  <div class="row">
+    <div *ngFor="let jugador of jugadores" class="col-md-6 col-lg-4 mb-3">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ jugador.nombre }}</h5>
+          <p class="card-text"><strong>Posición:</strong> {{ jugador.posicion }}</p>
+          <div class="mt-auto">
+            <button type="button" class="btn btn-sm btn-warning me-2" [routerLink]="['/jugadores/edit', jugador.id]">
+              Editar
+            </button>
+            <button type="button" class="btn btn-sm btn-danger" [routerLink]="['/jugadores/delete', jugador.id]">
+              Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
