@@ -1,46 +1,49 @@
-<div class="container mt-5" style="max-width: 1200px;">
-  <h1 class="mb-4">Lista de Equipos</h1>
-  <a [routerLink]="['/equipos/create']" class="btn btn-primary mb-3">
-    Crear Nuevo Equipo
-  </a>
+<section class="section">
+  <div class="container" style="max-width: 1200px;">
+    <h1 class="title is-3">Lista de Equipos</h1>
+    <a [routerLink]="['/equipos/create']" class="button is-primary" style="margin-bottom: 1rem;">
+      Crear Nuevo Equipo
+    </a>
 
-  <!-- Estilos inline para aumentar padding y un poco la fuente -->
-  <table class="table table-bordered table-striped table-hover align-middle" style="font-size: 1.05rem;">
-    <thead class="table-dark">
-      <tr>
-        <th style="padding: 1rem;">ID</th>
-        <th style="padding: 1rem;">Nombre</th>
-        <th style="padding: 1rem;">Ciudad</th>
-        <th style="padding: 1rem;">Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let equipo of equipos">
-        <td style="padding: 1rem;">{{ equipo.id }}</td>
-        <td style="padding: 1rem;">{{ equipo.nombre }}</td>
-        <td style="padding: 1rem;">{{ equipo.ciudad }}</td>
-        <td style="padding: 1rem;">
-          <a
-            [routerLink]="['/equipos/view', equipo.id]"
-            class="btn btn-info btn-sm me-1"
-          >
-            Ver Detalles
-          </a>
-          <a
-            [routerLink]="['/equipos/edit', equipo.id]"
-            class="btn btn-warning btn-sm me-1"
-          >
-            Editar
-          </a>
-          <a
-            [routerLink]="['/equipos/delete', equipo.id]"
-            class="btn btn-danger btn-sm"
-            (click)="confirmAction('¿Estás seguro de eliminar este equipo?') || $event.preventDefault()"
-          >
-            Eliminar
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+    <table class="table is-bordered is-striped is-hoverable" style="font-size: 1.05rem;">
+      <thead class="has-background-grey-dark has-text-white">
+        <tr>
+          <th style="padding: 1rem;">ID</th>
+          <th style="padding: 1rem;">Nombre</th>
+          <th style="padding: 1rem;">Ciudad</th>
+          <th style="padding: 1rem;">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let equipo of equipos">
+          <td style="padding: 1rem;">{{ equipo.id }}</td>
+          <td style="padding: 1rem;">{{ equipo.nombre }}</td>
+          <td style="padding: 1rem;">{{ equipo.ciudad }}</td>
+          <td style="padding: 1rem;">
+            <a
+              [routerLink]="['/equipos/view', equipo.id]"
+              class="button is-info is-small"
+              style="margin-right: 0.5rem;"
+            >
+              Ver Detalles
+            </a>
+            <a
+              [routerLink]="['/equipos/edit', equipo.id]"
+              class="button is-warning is-small"
+              style="margin-right: 0.5rem;"
+            >
+              Editar
+            </a>
+            <a
+              [routerLink]="['/equipos/delete', equipo.id]"
+              class="button is-danger is-small"
+              (click)="confirmAction('¿Estás seguro de eliminar este equipo?') || $event.preventDefault()"
+            >
+              Eliminar
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

@@ -1,4 +1,6 @@
-<h2>Eliminar Equipo</h2>
+<h2 class="title is-4">Eliminar Equipo</h2>
 <p>¿Estás seguro de eliminar el equipo <strong>{{ equipo?.nombre }}</strong>?</p>
-<button (click)="confirmarEliminacion()">Sí, eliminar</button>
-<button (click)="router.navigate(['/equipos'])">Cancelar</button>
+<div class="buttons">
+  <button class="button is-danger" (click)="confirmarEliminacion()">Sí, eliminar</button>
+  <button class="button" (click)="router.navigate(['/equipos'])">Cancelar</button>
+</div>

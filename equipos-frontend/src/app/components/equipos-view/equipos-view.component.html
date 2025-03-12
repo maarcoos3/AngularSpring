@@ -1,36 +1,53 @@
-<div class="container mt-4">
-  <h2 class="mb-3">Detalle del Equipo</h2>
-  <div class="card mb-4 shadow-sm">
-    <div class="card-body">
-      <h4 class="card-title">{{ equipo.nombre }}</h4>
-      <p class="card-text"><strong>Ciudad:</strong> {{ equipo.ciudad }}</p>
-      <!-- Puedes agregar más información del equipo aquí -->
+<section class="section">
+  <div class="container">
+    <h2 class="title is-4">Detalle del Equipo</h2>
+    <div class="card" style="margin-bottom: 1.5rem;">
+      <div class="card-content">
+        <p class="title is-4">{{ equipo.nombre }}</p>
+        <p class="subtitle is-6"><strong>Ciudad:</strong> {{ equipo.ciudad }}</p>
+        <!-- Puedes agregar más información del equipo aquí -->
+      </div>
     </div>
-  </div>
 
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h3>Jugadores</h3>
-    <button type="button" class="btn btn-sm btn-success" [routerLink]="['/jugadores/create']" [queryParams]="{ equipoId: equipo.id }">
-      Añadir Jugador
-    </button>
-  </div>
+    <div class="level" style="margin-bottom: 1.5rem;">
+      <div class="level-left">
+        <h3 class="title is-5">Jugadores</h3>
+      </div>
+      <div class="level-right">
+        <a
+          [routerLink]="['/jugadores/create']"
+          [queryParams]="{ equipoId: equipo.id }"
+          class="button is-success is-small"
+        >
+          Añadir Jugador
+        </a>
+      </div>
+    </div>
 
-  <div class="row">
-    <div *ngFor="let jugador of jugadores" class="col-md-6 col-lg-4 mb-3">
-      <div class="card h-100 shadow-sm">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">{{ jugador.nombre }}</h5>
-          <p class="card-text"><strong>Posición:</strong> {{ jugador.posicion }}</p>
-          <div class="mt-auto">
-            <button type="button" class="btn btn-sm btn-warning me-2" [routerLink]="['/jugadores/edit', jugador.id]">
-              Editar
-            </button>
-            <button type="button" class="btn btn-sm btn-danger" [routerLink]="['/jugadores/delete', jugador.id]">
-              Eliminar
-            </button>
+    <div class="columns is-multiline">
+      <div *ngFor="let jugador of jugadores" class="column is-half-tablet is-one-third-desktop">
+        <div class="card" style="height: 100%;">
+          <div class="card-content is-flex is-flex-direction-column" style="height: 100%;">
+            <p class="title is-5">{{ jugador.nombre }}</p>
+            <p class="subtitle is-6"><strong>Posición:</strong> {{ jugador.posicion }}</p>
+            <div style="margin-top: auto;">
+              <a
+                [routerLink]="['/jugadores/edit', jugador.id]"
+                class="button is-warning is-small"
+                style="margin-right: 0.5rem;"
+              >
+                Editar
+              </a>
+              <a
+                [routerLink]="['/jugadores/delete', jugador.id]"
+                class="button is-danger is-small"
+              >
+                Eliminar
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>

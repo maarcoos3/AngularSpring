@@ -38,7 +38,7 @@ export class JugadoresCreateComponent implements OnInit {
         next: (res: any) => {
           console.log('Jugador creado:', res);
           // Redirige a la vista de jugadores o a la vista del equipo según prefieras
-          this.router.navigate(['/jugadores']);
+          this.router.navigate(['/equipos/view', this.equipoId]);
         },
         error: (err: any) => console.error('Error al crear jugador', err)
       });

@@ -14,6 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class JugadoresEditComponent implements OnInit {
   jugadorForm!: FormGroup;
   jugadorId!: number;
+  equipoId!: number; 
 
   constructor(
     private fb: FormBuilder,
@@ -35,19 +36,33 @@ export class JugadoresEditComponent implements OnInit {
   cargarJugador(id: number): void {
     this.jugadorService.getJugador(id).subscribe({
       next: (jugador: any) => {
+        // Actualiza el formulario con los datos del jugador
         this.jugadorForm.patchValue(jugador);
+        // Obtiene el equipoId, ya sea desde un objeto anidado 'equipo' o desde la propiedad directa
+        const equipoId = jugador.equipo ? jugador.equipo.id : (jugador.equipoId || jugador.equipo_id);
+        if (equipoId) {
+          this.equipoId = equipoId;
+          // Actualiza el campo equipoId en el formulario para asegurar su presencia
+          this.jugadorForm.patchValue({ equipoId: equipoId });
+        } else {
+          console.error("No se encontró equipoId en el objeto jugador", jugador);
+        }
       },
       error: (err: any) => console.error('Error al cargar el jugador', err)
     });
   }
-
+  
   onSubmit(): void {
     if (this.jugadorForm.valid) {
       this.jugadorService.updateJugador(this.jugadorId, this.jugadorForm.value).subscribe({
         next: (res: any) => {
           console.log('Jugador actualizado:', res);
-          // Redirige a la lista de jugadores o a la vista del equipo
-          this.router.navigate(['/jugadores']);
+          // Redirige al detalle del equipo utilizando this.equipoId
+          if (this.equipoId && this.equipoId !== 0) {
+            this.router.navigate(['/equipos/view', this.equipoId]);
+          } else {
+            this.router.navigate(['/equipos']);
+          }
         },
         error: (err: any) => console.error('Error al actualizar jugador', err)
       });
