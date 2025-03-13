@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+//gestiona la comunicacion con el repositorio
 // indica que esta clase es un servicio de Spring
 @Service
 public class EquipoService {

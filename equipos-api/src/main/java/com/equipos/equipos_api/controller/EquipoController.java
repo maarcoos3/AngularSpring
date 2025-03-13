@@ -6,8 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+//@RestController (indica que la clase devuelve respuestas JSON)
 @RestController
+//@RequestMapping("/api/equipos") define la ruta base
 @RequestMapping("/api/equipos")
 public class EquipoController {
 

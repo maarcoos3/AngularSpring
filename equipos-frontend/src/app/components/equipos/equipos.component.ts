@@ -11,6 +11,8 @@ import { RouterLink } from '@angular/router';
   imports: [CommonModule, RouterLink],
   styleUrls: ['./equipos.component.css']
 })
+
+//ng onInit es un ciclo de vida que ayuda a iniciarlizar los datos
 export class EquiposComponent implements OnInit {
 
   equipos: Equipo[] = [];

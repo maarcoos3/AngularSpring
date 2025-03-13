@@ -6,9 +6,11 @@ import { Equipo } from '../models/equipo';
 @Injectable({
   providedIn: 'root'
 })
+// URL base que coincide con los endpoints del back-end (/api/equipos)
 export class EquipoService {
   private apiUrl = 'http://localhost:8080/api/equipos'; 
 
+  // inyectar el servicio HttpClient para realizar peticiones HTTP
   constructor(private http: HttpClient) {}
 
   getEquipos(): Observable<Equipo[]> {

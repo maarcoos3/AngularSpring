@@ -17,6 +17,7 @@ public class Jugador {
     private String nombre;
     private String posicion;
 
+    //relacion n-1
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "equipo_id")
     private Equipo equipo;

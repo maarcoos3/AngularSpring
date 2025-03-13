@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
 
+
+//anotaciones de lombok para reducir el código repetitivo
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,6 +20,7 @@ public class Equipo {
     private String nombre;
     private String ciudad;
 
+    //relacion 1-n     cascade y orphanRemoval son atribitos para ayudan a mantener la consistencia de datos
     @OneToMany(mappedBy = "equipo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Jugador> jugadores;
 }

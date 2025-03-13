@@ -27,9 +27,15 @@ export class JugadoresEditComponent implements OnInit {
     this.jugadorForm = this.fb.group({
       nombre: ['', Validators.required],
       posicion: ['', Validators.required],
-      equipoId: [0]  // Se actualizará según el jugador
+      equipoId: [0]
     });
     this.jugadorId = Number(this.route.snapshot.paramMap.get('id'));
+    // Asigna el equipoId desde el parámetro 'id2' de la ruta, si existe
+    const routeEquipoId = Number(this.route.snapshot.paramMap.get('id2'));
+    if (routeEquipoId) {
+      this.equipoId = routeEquipoId;
+      this.jugadorForm.patchValue({ equipoId: routeEquipoId });
+    }
     this.cargarJugador(this.jugadorId);
   }
 
@@ -38,14 +44,15 @@ export class JugadoresEditComponent implements OnInit {
       next: (jugador: any) => {
         // Actualiza el formulario con los datos del jugador
         this.jugadorForm.patchValue(jugador);
-        // Obtiene el equipoId, ya sea desde un objeto anidado 'equipo' o desde la propiedad directa
-        const equipoId = jugador.equipo ? jugador.equipo.id : (jugador.equipoId || jugador.equipo_id);
-        if (equipoId) {
-          this.equipoId = equipoId;
-          // Actualiza el campo equipoId en el formulario para asegurar su presencia
-          this.jugadorForm.patchValue({ equipoId: equipoId });
-        } else {
-          console.error("No se encontró equipoId en el objeto jugador", jugador);
+        // Solo si no se ha establecido un equipoId desde la ruta, se extrae del objeto jugador
+        if (!this.equipoId || this.equipoId === 0) {
+          const equipoIdFromJugador = jugador.equipo ? jugador.equipo.id : (jugador.equipoId || jugador.equipo_id);
+          if (equipoIdFromJugador) {
+            this.equipoId = equipoIdFromJugador;
+            this.jugadorForm.patchValue({ equipoId: equipoIdFromJugador });
+          } else {
+            console.error("No se encontró equipoId en el objeto jugador", jugador);
+          }
         }
       },
       error: (err: any) => console.error('Error al cargar el jugador', err)
@@ -57,7 +64,7 @@ export class JugadoresEditComponent implements OnInit {
       this.jugadorService.updateJugador(this.jugadorId, this.jugadorForm.value).subscribe({
         next: (res: any) => {
           console.log('Jugador actualizado:', res);
-          // Redirige al detalle del equipo utilizando this.equipoId
+          // Redirige al detalle del equipo utilizando el equipoId obtenido (priorizando el parámetro de la ruta)
           if (this.equipoId && this.equipoId !== 0) {
             this.router.navigate(['/equipos/view', this.equipoId]);
           } else {
